@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { lazy, memo, Suspense } from 'react';
+import { Route, Switch, HashRouter } from 'react-router-dom';
 
-function App() {
+const Login = lazy(() => import('./modules/Login/containers/Login'));
+const LayoutPublic = lazy(() => import('./containers/LayoutPublic/LayoutPublic'));
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HashRouter>
+      <Suspense fallback={<div />}>
+        <Switch>
+          <Route exact path="/" name="Home" component={LayoutPublic} />
+          <Route exact path="/login" name="Login" component={Login} />
+        </Switch>
+      </Suspense>
+    </HashRouter>
   );
-}
+};
 
-export default App;
+export default memo(App);
