@@ -1,116 +1,17 @@
 import styled, { css } from 'styled-components';
 import React from 'react';
 
-// Home page
-export const ContainerFluid = styled.div`
-  width: 100%;
-  padding-left: 0;
-  padding-right: 0;
-  margin-right: auto;
-  margin-left: auto;
-`;
+import {
+  ContainerFluid,
+  BannerWrapper,
+  BannerSubTitle,
+  BannerTextWrapper,
+  BannerTitle,
+  Headline,
+  Button,
+} from '../molecules/GlobalMoleculeStyle';
 
-export const BannerWrapper = styled.div`
-  background-image: url(${(props) => props.img});
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  color: white;
-  position: relative;
-  width: 100%;
-  height: 550px;
-  ${(props) =>
-    props.big &&
-    css`
-      height: 600px;
-    `}
-  ${(props) =>
-    props.overlay &&
-    css`
-      position: relative;
-      &:before {
-        content: '';
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
-        background-color: rgba(255, 255, 255, 0.5);
-        position: absolute;
-      }
-    `}
-`;
-
-export const BannerTitle = styled.div`
-  font-family: 'GreycliffCF-Bold', 'Helvetica Neue', helvetica, Arial, sans-serif;
-  font-size: 39px;
-  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-  color: white;
-  margin-bottom: 5px;
-`;
-
-export const BannerSubTitle = styled.div`
-  font-size: 15px;
-  margin-bottom: 25px;
-  color: white;
-  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
-`;
-
-export const BannerTextWrapper = styled.div`
-  position: absolute;
-  left: 140px;
-  top: 50%;
-  -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
-  transform: translate(0, -50%);
-  ${(props) =>
-    props.sectionCTA &&
-    css`
-      max-width: 800px;
-      left: 25%;
-      text-align: center;
-      color: #252524;
-      ${BannerTitle} {
-        color: #252524;
-      }
-      ${BannerSubTitle} {
-        margin-bottom: 25px;
-        line-height: 20px;
-        color: #252524;
-        font-size: 20px;
-      }
-    `}
-`;
-
-export const Headline = styled.div`
-  font-size: 27px;
-  color: #252524;
-  margin-bottom: 5px;
-`;
-
-export const Button = styled.a`
-  display: inline-block;
-  text-align: center;
-  font-size: 1rem;
-  background-color: transparent;
-  cursor: pointer;
-  font-weight: bold;
-  font-family: GreycliffCF-Bold;
-  width: 200px;
-  color: rgb(87, 87, 86);
-  border-radius: 5px;
-  border-width: 1px;
-  border-style: solid;
-  border-image: initial;
-  padding: 10px 15px;
-  border-color: rgb(87, 87, 86);
-  opacity: 0.5;
-  &:hover {
-    opacity: 1;
-  }
-`;
-
-// export Hero Banner of Home Page
-
+// Banner container Fruid
 export const BannerFruid = ({
   headline,
   BannerTitleText,
@@ -136,15 +37,69 @@ export const BannerFruid = ({
   );
 };
 
-// =================================================================
-// section how it works
-// =================================================================
-export const SectionWrapper = styled.div`
-  width: 100%;
-`;
+// Section about post pay
 
+export const SectionAboutPostPay = ({} = ({
+  url,
+  titleSection,
+  subTitleSection,
+  descriptionSection,
+}) => (
+  <Container>
+    <SectionTwoElementsWrapper>
+      <SectionTwoElementsImgWrapper>
+        <img src={url} alt="handup" />
+      </SectionTwoElementsImgWrapper>
+      <SectionTwoElementsTextWrapper>
+        <TitleSection>{titleSection}</TitleSection>
+        <SectionSubtitle>{subTitleSection}</SectionSubtitle>
+        <SectionDescription>{descriptionSection}</SectionDescription>
+      </SectionTwoElementsTextWrapper>
+    </SectionTwoElementsWrapper>
+  </Container>
+));
+
+// Section how it works
+
+export const SectionHowItWorks = ({ titleSection, children }) => (
+  <SectionWrapper>
+    <Container>
+      <TitleSection center="center" padding_bottom="padding_bottom">
+        {titleSection}
+      </TitleSection>
+      <SectionBodyWrapper>{children}</SectionBodyWrapper>
+    </Container>
+  </SectionWrapper>
+);
+
+// ItemContent
+export const ItemContent = ({
+  url,
+  alt,
+  titleItem,
+  desTitleItem,
+  newAttr,
+  centerImg,
+  bigImgMb,
+}) => (
+  <ItemColumnWrapper>
+    <ImageItem bigImg={newAttr} centerImg={centerImg}>
+      <img src={url} alt={alt} />
+    </ImageItem>
+    <TitleItem bigImgMb={bigImgMb}>{titleItem}</TitleItem>
+    <DesTitleItem center="center" padding_bottom="padding_bottom">
+      {desTitleItem}
+    </DesTitleItem>
+  </ItemColumnWrapper>
+);
+// Container
 export const Container = styled.div`
   padding: 60px 80px;
+`;
+
+// Section
+export const SectionWrapper = styled.div`
+  width: 100%;
 `;
 
 export const TitleSection = styled.h2`
@@ -158,20 +113,6 @@ export const TitleSection = styled.h2`
     css`
       padding-bottom: 60px;
     `}
-`;
-
-export const SectionBodyWrapper = styled.ul`
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-`;
-export const ItemColumnWrapper = styled.li`
-  padding: 0 20px;
-  width: 33.3333%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 300px;
 `;
 
 export const ImageItem = styled.div`
@@ -215,7 +156,6 @@ export const TitleItem = styled.h4`
       max-width: 220px;
     `}
 `;
-
 export const DesTitleItem = styled.p`
   text-align: left;
   ${(props) =>
@@ -223,6 +163,21 @@ export const DesTitleItem = styled.p`
     css`
       text-align: center;
     `}
+`;
+
+export const ItemColumnWrapper = styled.li`
+  padding: 0 20px;
+  width: 33.3333%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 300px;
+`;
+
+export const SectionBodyWrapper = styled.ul`
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
 `;
 
 // =================================================================

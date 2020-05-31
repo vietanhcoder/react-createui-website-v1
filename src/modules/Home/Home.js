@@ -1,20 +1,10 @@
 import React from 'react';
 import {
-  SectionWrapper,
-  Container,
-  TitleSection,
-  SectionBodyWrapper,
-  ItemColumnWrapper,
-  ImageItem,
-  TitleItem,
-  DesTitleItem,
+  ItemContent,
   SectionTwoElements,
-  SectionTwoElementsWrapper,
-  SectionTwoElementsImgWrapper,
-  SectionTwoElementsTextWrapper,
-  SectionSubtitle,
-  SectionDescription,
   BannerFruid,
+  SectionAboutPostPay,
+  SectionHowItWorks,
 } from '../../StyledComponents/pages/GlobalPageStyle';
 
 import plushuman from '../../img/plushuman.svg';
@@ -27,50 +17,7 @@ import howItWorks3 from '../../img/how-it-works-3.png';
 import retailerBg from '../../img/are-you-retailer-bg.jpg';
 
 const Home = () => {
-  const ItemContent = ({ url, alt, titleItem, desTitleItem, newAttr, centerImg, bigImgMb }) => (
-    <ItemColumnWrapper>
-      <ImageItem bigImg={newAttr} centerImg={centerImg}>
-        <img src={url} alt={alt} />
-      </ImageItem>
-      <TitleItem bigImgMb={bigImgMb}>{titleItem}</TitleItem>
-      <DesTitleItem center="center" padding_bottom="padding_bottom">
-        {desTitleItem}
-      </DesTitleItem>
-    </ItemColumnWrapper>
-  );
-
-  const SectionHowItWorks = ({ titleSection, children }) => (
-    <SectionWrapper>
-      <Container>
-        <TitleSection center="center" padding_bottom="padding_bottom">
-          {titleSection}
-        </TitleSection>
-        <SectionBodyWrapper>{children}</SectionBodyWrapper>
-      </Container>
-    </SectionWrapper>
-  );
-
   // Two Element Section
-
-  const SectionAboutPostPay = ({} = ({
-    url,
-    titleSection,
-    subTitleSection,
-    descriptionSection,
-  }) => (
-    <Container>
-      <SectionTwoElementsWrapper>
-        <SectionTwoElementsImgWrapper>
-          <img src={url} alt="handup" />
-        </SectionTwoElementsImgWrapper>
-        <SectionTwoElementsTextWrapper>
-          <TitleSection>{titleSection}</TitleSection>
-          <SectionSubtitle>{subTitleSection}</SectionSubtitle>
-          <SectionDescription>{descriptionSection}</SectionDescription>
-        </SectionTwoElementsTextWrapper>
-      </SectionTwoElementsWrapper>
-    </Container>
-  ));
   return (
     <div>
       <SectionHowItWorks titleSection="how it works">
