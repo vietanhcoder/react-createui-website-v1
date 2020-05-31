@@ -1,8 +1,6 @@
 import styled, { css } from 'styled-components';
 import React from 'react';
 
-// breack ponter: 500,
-
 // Home page
 export const ContainerFluid = styled.div`
   width: 100%;
@@ -12,14 +10,6 @@ export const ContainerFluid = styled.div`
   margin-left: auto;
 `;
 
-// ${(props) =>
-//   props.newAttr &&
-//   css`
-//     color: red;
-//   `}
-// const url = ${(props) => props.url && css`
-
-//   `}
 export const BannerWrapper = styled.div`
   background-image: url(${(props) => props.img});
   background-size: cover;

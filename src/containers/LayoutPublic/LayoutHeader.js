@@ -5,7 +5,7 @@ const LayoutHeader = () => {
   return (
     <div>
       <BannerFruid
-        big
+        big="big"
         BannerTitleText="love the way you pay"
         BannerSubTitleText="shop now, pay in four instalments"
         url={heroBannerImg}
