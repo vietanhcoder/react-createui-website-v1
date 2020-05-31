@@ -130,10 +130,11 @@ export const BannerFruid = ({
   nameBtn,
   sectionCTA,
   overlay,
+  big,
 }) => {
   return (
     <ContainerFluid>
-      <BannerWrapper overlay={overlay} big img={url}>
+      <BannerWrapper overlay={overlay} big={big} img={url}>
         <BannerTextWrapper sectionCTA={sectionCTA}>
           {headline ? <Headline>{headline}</Headline> : null}
           <BannerTitle>{BannerTitleText}</BannerTitle>
