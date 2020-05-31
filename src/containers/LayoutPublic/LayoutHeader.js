@@ -1,31 +1,13 @@
 import React from 'react';
-import {
-  ContainerFluid,
-  BannerWrapper,
-  BannerTextWrapper,
-  BannerTitle,
-  BannerSubTitle,
-} from '../../StyledComponents/pages/GlobalPageStyle';
-
+import { BannerFruid } from '../../StyledComponents/pages/GlobalPageStyle';
+import heroBannerImg from '../../img/homepage-welcome-bg.jpg';
 const LayoutHeader = () => {
-  const Herobaner = ({ BannerTitleText, BannerSubTitleText }) => {
-    return (
-      <ContainerFluid>
-        <BannerWrapper big="big">
-          <BannerTextWrapper>
-            <BannerTitle>{BannerTitleText}</BannerTitle>
-            <BannerSubTitle>{BannerSubTitleText}</BannerSubTitle>
-          </BannerTextWrapper>
-        </BannerWrapper>
-      </ContainerFluid>
-    );
-  };
-
   return (
     <div>
-      <Herobaner
+      <BannerFruid
         BannerTitleText="love the way you pay"
         BannerSubTitleText="shop now, pay in four instalments"
+        url={heroBannerImg}
       />
     </div>
   );

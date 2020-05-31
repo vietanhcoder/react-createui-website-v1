@@ -14,6 +14,7 @@ import {
   SectionTwoElementsTextWrapper,
   SectionSubtitle,
   SectionDescription,
+  BannerFruid,
 } from '../../StyledComponents/pages/GlobalPageStyle';
 
 import plushuman from '../../img/plushuman.svg';
@@ -23,6 +24,7 @@ import handup from '../../img/handup.svg';
 import howItWorks1 from '../../img/how-it-works-1.png';
 import howItWorks2 from '../../img/how-it-works-2.png';
 import howItWorks3 from '../../img/how-it-works-3.png';
+import retailerBg from '../../img/are-you-retailer-bg.jpg';
 
 const Home = () => {
   const ItemContent = ({ url, alt, titleItem, desTitleItem, newAttr, centerImg, bigImgMb }) => (
@@ -137,6 +139,17 @@ const Home = () => {
           desTitleItem="Confirm your order in one click and pay in four interest-free payments"
         />
       </SectionHowItWorks>
+      <BannerFruid
+        sectionCTA
+        overlay
+        headline="are you a retailer"
+        BannerTitleText="add postpay to your checkout today"
+        BannerSubTitleText="Learn how postpay can increase conversion rates, average basket sizes and attract more
+        repeat customers to your business."
+        url={retailerBg}
+        href="#"
+        nameBtn="learn more"
+      />
     </div>
   );
 };
