@@ -11,7 +11,8 @@ export const ContainerFluid = styled.div`
 
 // Container
 export const Container = styled.div`
-  padding: 60px 80px;
+  margin: 0 auto;
+  padding: 0 60px;
 `;
 
 // Hero banner
@@ -62,7 +63,7 @@ export const BannerSubTitle = styled.div`
 
 export const BannerTextWrapper = styled.div`
   position: absolute;
-  left: 140px;
+  left: 60px;
   top: 50%;
   -webkit-transform: translate(0, -50%);
   -ms-transform: translate(0, -50%);
@@ -111,5 +112,28 @@ export const Button = styled.a`
   opacity: 0.5;
   &:hover {
     opacity: 1;
+  }
+`;
+
+export const PrimaryButton = styled.button`
+  display: inline-block;
+  text-align: center;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: GreycliffCF-Bold;
+  width: 120px;
+  background-color: rgb(138, 187, 213);
+  color: white;
+  border-radius: 5px;
+  border-width: 1px;
+  border-style: solid;
+  border-image: initial;
+  padding: 8px 25px;
+  border-color: rgb(138, 187, 213);
+  &:hover {
+    background-color: rgb(100, 137, 157);
+    color: white;
+    border-color: rgb(100, 137, 157);
   }
 `;

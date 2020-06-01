@@ -100,6 +100,7 @@ export const ItemContent = ({
 // Section
 export const SectionWrapper = styled.div`
   width: 100%;
+  padding: 80px 0;
 `;
 
 export const TitleSection = styled.h2`
