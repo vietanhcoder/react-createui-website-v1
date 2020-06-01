@@ -9,6 +9,7 @@ import {
   BannerTitle,
   Headline,
   Button,
+  Container,
 } from '../molecules/GlobalMoleculeStyle';
 
 // Banner container Fruid
@@ -39,14 +40,9 @@ export const BannerFruid = ({
 
 // Section about post pay
 
-export const SectionAboutPostPay = ({} = ({
-  url,
-  titleSection,
-  subTitleSection,
-  descriptionSection,
-}) => (
+export const SectionAboutPostPay = ({ url, titleSection, subTitleSection, descriptionSection }) => (
   <Container>
-    <SectionTwoElementsWrapper>
+    <SectionBodyWrapper alignCenter>
       <SectionTwoElementsImgWrapper>
         <img src={url} alt="handup" />
       </SectionTwoElementsImgWrapper>
@@ -55,19 +51,27 @@ export const SectionAboutPostPay = ({} = ({
         <SectionSubtitle>{subTitleSection}</SectionSubtitle>
         <SectionDescription>{descriptionSection}</SectionDescription>
       </SectionTwoElementsTextWrapper>
-    </SectionTwoElementsWrapper>
+    </SectionBodyWrapper>
   </Container>
-));
+);
 
 // Section how it works
 
-export const SectionHowItWorks = ({ titleSection, children }) => (
+export const SectionComponent = ({ titleSection, children, alignCenter }) => (
   <SectionWrapper>
     <Container>
       <TitleSection center="center" padding_bottom="padding_bottom">
         {titleSection}
       </TitleSection>
-      <SectionBodyWrapper>{children}</SectionBodyWrapper>
+      <SectionBodyWrapper alignCenter={alignCenter}>{children}</SectionBodyWrapper>
+    </Container>
+  </SectionWrapper>
+);
+
+export const SectionTwoRow = ({ children, alignCenter }) => (
+  <SectionWrapper>
+    <Container>
+      <SectionBodyWrapper alignCenter={alignCenter}>{children}</SectionBodyWrapper>
     </Container>
   </SectionWrapper>
 );
@@ -92,10 +96,6 @@ export const ItemContent = ({
     </DesTitleItem>
   </ItemColumnWrapper>
 );
-// Container
-export const Container = styled.div`
-  padding: 60px 80px;
-`;
 
 // Section
 export const SectionWrapper = styled.div`
@@ -178,18 +178,17 @@ export const SectionBodyWrapper = styled.ul`
   display: flex;
   align-items: baseline;
   justify-content: space-between;
+  width: 100%;
+  ${(props) =>
+    props.alignCenter &&
+    css`
+      align-items: center;
+    `}
 `;
 
 // =================================================================
 //  section About post pay
 // =================================================================
-
-export const SectionTwoElements = styled.section``;
-
-export const SectionTwoElementsWrapper = styled.div`
-  display: flex;
-  width: 100%;
-`;
 
 export const SectionTwoElementsImgWrapper = styled.div`
   width: 33%;

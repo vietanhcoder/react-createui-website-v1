@@ -8,6 +8,13 @@ export const ContainerFluid = styled.div`
   margin-right: auto;
   margin-left: auto;
 `;
+
+// Container
+export const Container = styled.div`
+  padding: 60px 80px;
+`;
+
+// Hero banner
 export const BannerWrapper = styled.div`
   background-image: url(${(props) => props.img});
   background-size: cover;

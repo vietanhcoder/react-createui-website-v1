@@ -1,10 +1,10 @@
 import React from 'react';
 import {
   ItemContent,
-  SectionTwoElements,
   BannerFruid,
   SectionAboutPostPay,
-  SectionHowItWorks,
+  SectionComponent,
+  SectionTwoRow,
 } from '../../StyledComponents/pages/GlobalPageStyle';
 
 import plushuman from '../../img/plushuman.svg';
@@ -20,7 +20,7 @@ const Home = () => {
   // Two Element Section
   return (
     <div>
-      <SectionHowItWorks titleSection="how it works">
+      <SectionComponent titleSection="how it works">
         <ItemContent
           url={plushuman}
           alt="human"
@@ -39,9 +39,9 @@ const Home = () => {
           titleItem="pay nothing extra"
           desTitleItem="postpay is always zero interest and charges absolutely no additional fees when you repay on time. Automatic payment taken every 2 weeks in four equal installments."
         />
-      </SectionHowItWorks>
+      </SectionComponent>
 
-      <SectionTwoElements>
+      <SectionTwoRow alignCenter="alignCenter">
         <SectionAboutPostPay
           url={handup}
           titleSection="about postpay"
@@ -57,9 +57,9 @@ const Home = () => {
             </p>
           }
         />
-      </SectionTwoElements>
+      </SectionTwoRow>
       <h2>Section Bonus</h2>
-      <SectionHowItWorks titleSection="how it works">
+      <SectionComponent titleSection="how it works">
         <ItemContent
           bigImgMb="bigImgMb"
           newAttr="bigImg"
@@ -85,7 +85,7 @@ const Home = () => {
           titleItem="postpay it!"
           desTitleItem="Confirm your order in one click and pay in four interest-free payments"
         />
-      </SectionHowItWorks>
+      </SectionComponent>
       <BannerFruid
         sectionCTA
         overlay
