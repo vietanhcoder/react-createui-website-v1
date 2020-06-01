@@ -4,7 +4,7 @@ import {
   BannerFruid,
   SectionAboutPostPay,
   SectionComponent,
-  SectionTwoRow,
+  SectionTwoColumn,
 } from '../../StyledComponents/pages/GlobalPageStyle';
 
 import plushuman from '../../img/plushuman.svg';
@@ -41,7 +41,7 @@ const Home = () => {
         />
       </SectionComponent>
 
-      <SectionTwoRow alignCenter="alignCenter">
+      <SectionTwoColumn alignCenter="alignCenter">
         <SectionAboutPostPay
           url={handup}
           titleSection="about postpay"
@@ -57,7 +57,7 @@ const Home = () => {
             </p>
           }
         />
-      </SectionTwoRow>
+      </SectionTwoColumn>
       <h2>Section Bonus</h2>
       <SectionComponent titleSection="how it works">
         <ItemContent

@@ -68,7 +68,7 @@ export const SectionComponent = ({ titleSection, children, alignCenter }) => (
   </SectionWrapper>
 );
 
-export const SectionTwoRow = ({ children, alignCenter }) => (
+export const SectionTwoColumn = ({ children, alignCenter }) => (
   <SectionWrapper>
     <Container>
       <SectionBodyWrapper alignCenter={alignCenter}>{children}</SectionBodyWrapper>
