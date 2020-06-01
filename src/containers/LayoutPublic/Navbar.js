@@ -81,10 +81,16 @@ const Navbar = () => {
             padding-top: 0px;
           }
           ${DropdownLinkLv2} {
+            position: absolute;
             opacity: 1;
             visibility: visible;
             display: flex;
+            flex-direction: column;
             z-index: 1;
+            background: white;
+            top: 54px;
+            width: max-content;
+            font-family: 'GreycliffCF-Light';
           }
         }
       `}
@@ -105,6 +111,7 @@ const Navbar = () => {
     z-index:100;
     width:100%;
     color: white;
+    font-family: 'GreycliffCF-Bold';
     a {
       color: white;
     }
@@ -158,31 +165,30 @@ const Navbar = () => {
   `;
 
   // const _handleScrolll = () => {};
-  const NavBarHeader = ({ scrollPos }) =>
-    console.log(scrollPos) || (
-      <NavBarComponent scrollPos={scrollPos}>
-        <Container>
-          <NavBarWrapper>
-            <LogoLink exact to="/">
-              Postpay
-            </LogoLink>
-            <NavBarLinkWrapper>
-              <NavLinkLv1 to="/">How it works</NavLinkLv1>
-              <MenuDropdown dropDown>
-                postpay for business
-                <FontAwesomeIcon icon={faChevronDown} />
-                <DropdownLinkLv2>
-                  <NavLinkLv2 to="/">Benefits</NavLinkLv2>
-                  <NavLinkLv2 to="/">add postpay for your business</NavLinkLv2>
-                  <NavLinkLv2 to="/">for developers</NavLinkLv2>
-                </DropdownLinkLv2>
-              </MenuDropdown>
-              <PrimaryButton to="/login">login</PrimaryButton>
-            </NavBarLinkWrapper>
-          </NavBarWrapper>
-        </Container>
-      </NavBarComponent>
-    );
+  const NavBarHeader = ({ scrollPos }) => (
+    <NavBarComponent scrollPos={scrollPos}>
+      <Container>
+        <NavBarWrapper>
+          <LogoLink exact to="/">
+            Postpay
+          </LogoLink>
+          <NavBarLinkWrapper>
+            <NavLinkLv1 to="/">how it works</NavLinkLv1>
+            <MenuDropdown dropDown>
+              postpay for business
+              <FontAwesomeIcon icon={faChevronDown} />
+              <DropdownLinkLv2>
+                <NavLinkLv2 to="/">Benefits</NavLinkLv2>
+                <NavLinkLv2 to="/">add postpay for your business</NavLinkLv2>
+                <NavLinkLv2 to="/">for developers</NavLinkLv2>
+              </DropdownLinkLv2>
+            </MenuDropdown>
+            <PrimaryButton to="/login">login</PrimaryButton>
+          </NavBarLinkWrapper>
+        </NavBarWrapper>
+      </Container>
+    </NavBarComponent>
+  );
 
   return (
     <div>
