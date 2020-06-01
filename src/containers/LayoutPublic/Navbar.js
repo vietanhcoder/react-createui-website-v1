@@ -21,7 +21,7 @@ import { faChevronDown } from '@fortawesome/fontawesome-free-solid';
 
 const Navbar = () => {
   const [scrollPos, setScrollPos] = useState(false);
-  const showNavBarPos = 500;
+  const showNavBarPos = 0;
   window.onscroll = function () {
     const currentScrollPos = window.pageYOffset;
     if (currentScrollPos > showNavBarPos) {
@@ -145,7 +145,7 @@ const Navbar = () => {
             top: 0;
           }
         }
-        animation: fadedown 3s;
+        animation: fadedown 1s;
       `}
     &:hover{
       box-shadow: 0 3px 6px rgba(0,0,0,0.3);
