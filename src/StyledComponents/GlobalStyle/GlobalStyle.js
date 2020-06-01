@@ -4,13 +4,37 @@ import GreycliffCFBold from '../../fonts/GreycliffCF-Bold.otf';
 import GreycliffCFLight from '../../fonts/GreycliffCF-Light.otf';
 import GreycliffCFRegular from '../../fonts/GreycliffCF-Regular.otf';
 
+// import icomoonEot from '../../fonts/icomoon/fonts/icomoon.eot';
+// import icomoonSvg from '../../fonts/icomoon/fonts/icomoon.svg';
+// import icomoonTtf from '../../fonts/icomoon/fonts/icomoon.ttf';
+// import icomoonWoff from '../../fonts/icomoon/fonts/icomoon.woff';
+/* @font-face {
+  font-family: 'icomoon';
+  src:  url(${icomoonEot});
+  src:  url(${icomoonEot}) format('embedded-opentype'),
+    url(${icomoonTtf}) format('truetype'),
+    url(${icomoonWoff}) format('woff'),
+    url(${icomoonSvg}) format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+  } */
 export const GlobalStyle = createGlobalStyle`
+
+
   @font-face {
     font-family: 'GreycliffCF-Bold';
     src: local('GreycliffCF-Bold'), local('GreycliffCFBold'),
     url(${GreycliffCFBold}) format('opentype');
     font-weight: 700;
     font-style: bold;
+  }
+  @font-face {
+    font-family: 'GreycliffCF-Light';
+    src: local('GreycliffCF-Light'), local('GreycliffCFLight'),
+    url(${GreycliffCFLight}) format('opentype');
+    font-weight: 400;
+    font-style: normal;
   }
   @font-face {
     font-family: 'GreycliffCF-Light';
@@ -39,7 +63,7 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1;
     margin: 0;
   }
-  
+
 
   h2 {
     font-size:35px;
@@ -93,4 +117,10 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     vertical-align: middle;
   }
+  a {
+    color: rgb(87, 87, 86);
+    text-decoration: none;
+  }
+
+
 `;
