@@ -167,7 +167,6 @@ const Navbar = () => {
         }
       }
     }
-
   `;
 
   // const _handleScrolll = () => {};
