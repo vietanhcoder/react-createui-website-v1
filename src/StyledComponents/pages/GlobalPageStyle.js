@@ -1,5 +1,7 @@
-import styled, { css } from 'styled-components';
 import React from 'react';
+import styled, { css } from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronDown } from '@fortawesome/fontawesome-free-solid';
 
 import {
   ContainerFluid,
@@ -10,6 +12,16 @@ import {
   Headline,
   Button,
   Container,
+  // Navbar
+  PrimaryButton,
+  LogoLink,
+  NavLinkLv2,
+  DropdownLinkLv2,
+  NavLinkLv1,
+  MenuDropdown,
+  NavBarWrapper,
+  NavBarLinkWrapper,
+  NavBarComponent,
 } from '../molecules/GlobalMoleculeStyle';
 
 // Banner container Fruid
@@ -96,7 +108,35 @@ export const ItemContent = ({
     </DesTitleItem>
   </ItemColumnWrapper>
 );
-
+// =================================================================
+//  section About post pay
+// =================================================================
+export const NavBarHeader = ({ scrollPos }) => (
+  <NavBarComponent scrollPos={scrollPos}>
+    <Container>
+      <NavBarWrapper>
+        <LogoLink exact to="/">
+          postpay
+        </LogoLink>
+        <NavBarLinkWrapper>
+          <NavLinkLv1 to="/">how it works</NavLinkLv1>
+          <MenuDropdown dropDown>
+            postpay for business
+            <FontAwesomeIcon icon={faChevronDown} />
+            <DropdownLinkLv2>
+              <NavLinkLv2 to="/">Benefits</NavLinkLv2>
+              <NavLinkLv2 to="/">add postpay for your business</NavLinkLv2>
+              <NavLinkLv2 to="/">for developers</NavLinkLv2>
+            </DropdownLinkLv2>
+          </MenuDropdown>
+          <PrimaryButton headerBtn to="/login">
+            login
+          </PrimaryButton>
+        </NavBarLinkWrapper>
+      </NavBarWrapper>
+    </Container>
+  </NavBarComponent>
+);
 // Section
 export const SectionWrapper = styled.div`
   width: 100%;

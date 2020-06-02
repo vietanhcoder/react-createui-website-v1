@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 // Container fluid
 export const ContainerFluid = styled.div`
@@ -146,3 +147,145 @@ export const PrimaryButton = styled.button`
     border-color: rgb(100, 137, 157);
   }
 `;
+
+// =================================
+// navbar
+// =================================
+export const LogoLink = styled(NavLink)`
+  font-size: 45px;
+  font-family: 'GreycliffCF-Bold';
+`;
+
+export const NavLinkLv2 = styled(NavLink)`
+  padding: 20px;
+  border-bottom: 1px solid gray;
+  &:last-child {
+    border: none;
+  }
+`;
+
+export const DropdownLinkLv2 = styled.div`
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  display: none;
+  flex-direction: column;
+  z-index: 1;
+  background: white;
+  top: 0;
+  width: max-content;
+  font-family: 'GreycliffCF-Light';
+  margin-top: 20px;
+`;
+export const NavLinkLv1 = styled(NavLink)`
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+`;
+
+export const MenuDropdown = styled.div`
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  top: 0;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  ${(props) =>
+    props.dropDown &&
+    css`
+      a {
+        text-shadow: none;
+      }
+      &:after {
+        position: absolute;
+        top: 50%;
+      }
+      svg {
+        margin-left: 10px;
+        padding-top: 5px;
+      }
+      &:hover {
+        svg {
+          transform: scale(-1);
+          padding-top: 0px;
+        }
+        ${DropdownLinkLv2} {
+          position: absolute;
+          opacity: 1;
+          visibility: visible;
+          display: flex;
+          flex-direction: column;
+          z-index: 1;
+          background: white;
+          top: 54px;
+          width: max-content;
+          font-family: 'GreycliffCF-Light';
+        }
+      }
+    `}
+`;
+
+export const NavBarWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+export const NavBarLinkWrapper = styled.div`
+  display: flex;
+  align-items: center;
+`;
+export const NavBarComponent = styled.div`
+    /* padding: 10px 0; */
+    align-items: center;
+    position:fixed;
+    z-index:100;
+    width:100%;
+    color: white;
+    font-family: 'GreycliffCF-Bold';
+    a {
+      color: white;
+    }
+    ${NavLinkLv1},${MenuDropdown} {
+      padding: 30px 24px;
+      font-size: 15px;
+      font-weight: bold;
+      font-family: 'GreycliffCF-Bold';
+    }
+
+    ${(props) =>
+      props.scrollPos &&
+      css`
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        background: white;
+        color: #575756;
+        a {
+          color: #8abbd5;
+        }
+        ${NavLinkLv1}, ${MenuDropdown} {
+          color: #575756;
+          a {
+            color: #575756;
+          }
+        }
+        @keyframes fadedown {
+          from {
+            top: -50px;
+          }
+          to {
+            top: 0;
+          }
+        }
+        animation: fadedown 1s;
+      `}
+    &:hover{
+      box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+      background: white;
+      color: #575756;
+      a {
+        color: #8abbd5;
+      }
+      ${NavLinkLv1}, ${MenuDropdown}{
+        color: #575756;
+        a {
+          color:  #575756;
+        }
+      }
+    }
+  `;
