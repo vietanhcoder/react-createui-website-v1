@@ -12,7 +12,7 @@ export const ContainerFluid = styled.div`
 // Container
 export const Container = styled.div`
   margin: 0 auto;
-  padding: 0 60px;
+  padding: 0 100px;
 `;
 
 // Hero banner
@@ -48,31 +48,35 @@ export const BannerWrapper = styled.div`
 
 export const BannerTitle = styled.div`
   font-family: 'GreycliffCF-Bold', 'Helvetica Neue', helvetica, Arial, sans-serif;
-  font-size: 39px;
+  font-size: 55px;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
   color: white;
   margin-bottom: 5px;
+  ${(props) =>
+    props.sectionCTA &&
+    css`
+      font-size: 40px;
+    `}
 `;
 
 export const BannerSubTitle = styled.div`
-  font-size: 15px;
   margin-bottom: 25px;
   color: white;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  font-size: 30px;
 `;
 
 export const BannerTextWrapper = styled.div`
   position: absolute;
-  left: 60px;
+  left: 100px;
   top: 50%;
-  -webkit-transform: translate(0, -50%);
-  -ms-transform: translate(0, -50%);
   transform: translate(0, -50%);
   ${(props) =>
     props.sectionCTA &&
     css`
       max-width: 800px;
-      left: 25%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-align: center;
       color: #252524;
       ${BannerTitle} {
@@ -109,9 +113,9 @@ export const Button = styled.a`
   border-image: initial;
   padding: 10px 15px;
   border-color: rgb(87, 87, 86);
-  opacity: 0.5;
   &:hover {
-    opacity: 1;
+    color: rgb(37, 37, 36);
+    border-color: rgb(37, 37, 36);
   }
 `;
 
@@ -131,6 +135,11 @@ export const PrimaryButton = styled.button`
   border-image: initial;
   padding: 8px 25px;
   border-color: rgb(138, 187, 213);
+  ${(props) =>
+    props.headerBtn &&
+    css`
+      text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+    `}
   &:hover {
     background-color: rgb(100, 137, 157);
     color: white;

@@ -29,7 +29,7 @@ export const BannerFruid = ({
       <BannerWrapper overlay={overlay} big={big} img={url}>
         <BannerTextWrapper sectionCTA={sectionCTA}>
           {headline ? <Headline>{headline}</Headline> : null}
-          <BannerTitle>{BannerTitleText}</BannerTitle>
+          <BannerTitle sectionCTA={sectionCTA}>{BannerTitleText}</BannerTitle>
           <BannerSubTitle>{BannerSubTitleText}</BannerSubTitle>
           {href ? <Button href={href}>{nameBtn}</Button> : null}
         </BannerTextWrapper>

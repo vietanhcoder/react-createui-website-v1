@@ -16,7 +16,6 @@ import { faChevronDown } from '@fortawesome/fontawesome-free-solid';
  *         Lv2NavLink: benefits
  *         Lv2NavLink: benefits
  *   - Login button
- *
  */
 
 const Navbar = () => {
@@ -52,11 +51,14 @@ const Navbar = () => {
     flex-direction: column;
     z-index: 1;
     background: white;
-    top: 54px;
+    top: 0;
     width: max-content;
     font-family: 'GreycliffCF-Light';
+    margin-top: 20px;
   `;
-  const NavLinkLv1 = styled(NavLink)``;
+  const NavLinkLv1 = styled(NavLink)`
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  `;
 
   const MenuDropdown = styled.div`
     position: relative;
@@ -64,9 +66,13 @@ const Navbar = () => {
     display: flex;
     align-items: center;
     top: 0;
+    text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
     ${(props) =>
       props.dropDown &&
       css`
+        a {
+          text-shadow: none;
+        }
         &:after {
           position: absolute;
           top: 50%;
@@ -105,7 +111,7 @@ const Navbar = () => {
     align-items: center;
   `;
   const NavBarComponent = styled.div`
-    padding: 10px 0;
+    /* padding: 10px 0; */
     align-items: center;
     position:fixed;
     z-index:100;
@@ -116,7 +122,7 @@ const Navbar = () => {
       color: white;
     }
     ${NavLinkLv1},${MenuDropdown} {
-      padding: 0 20px;
+      padding: 30px 24px;
       font-size: 15px;
       font-weight: bold;
       font-family: 'GreycliffCF-Bold';
@@ -170,7 +176,7 @@ const Navbar = () => {
       <Container>
         <NavBarWrapper>
           <LogoLink exact to="/">
-            Postpay
+            postpay
           </LogoLink>
           <NavBarLinkWrapper>
             <NavLinkLv1 to="/">how it works</NavLinkLv1>
@@ -183,7 +189,9 @@ const Navbar = () => {
                 <NavLinkLv2 to="/">for developers</NavLinkLv2>
               </DropdownLinkLv2>
             </MenuDropdown>
-            <PrimaryButton to="/login">login</PrimaryButton>
+            <PrimaryButton headerBtn to="/login">
+              login
+            </PrimaryButton>
           </NavBarLinkWrapper>
         </NavBarWrapper>
       </Container>
