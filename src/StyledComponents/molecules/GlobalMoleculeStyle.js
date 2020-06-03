@@ -98,54 +98,49 @@ export const Headline = styled.div`
   margin-bottom: 5px;
 `;
 
-export const Button = styled.a`
+// export const Button = styled.a`
+
+export const Button = styled.button`
   display: inline-block;
   text-align: center;
   font-size: 1rem;
-  background-color: transparent;
   cursor: pointer;
   font-weight: bold;
   font-family: GreycliffCF-Bold;
-  width: 200px;
-  color: rgb(87, 87, 86);
   border-radius: 5px;
   border-width: 1px;
   border-style: solid;
   border-image: initial;
+  background-color: transparent;
+  color: rgb(87, 87, 86);
   padding: 10px 15px;
   border-color: rgb(87, 87, 86);
+
   &:hover {
     color: rgb(37, 37, 36);
     border-color: rgb(37, 37, 36);
   }
-`;
+  ${(props) =>
+    props.subscribeBtn &&
+    css`
+      padding: 0px 33px;
+      height: 46px;
+      margin-top: 6px;
+    `}
 
-export const PrimaryButton = styled.button`
-  display: inline-block;
-  text-align: center;
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: bold;
-  font-family: GreycliffCF-Bold;
-  width: 120px;
-  background-color: rgb(138, 187, 213);
-  color: white;
-  border-radius: 5px;
-  border-width: 1px;
-  border-style: solid;
-  border-image: initial;
-  padding: 8px 25px;
-  border-color: rgb(138, 187, 213);
   ${(props) =>
     props.headerBtn &&
     css`
       text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+      border-color: rgb(138, 187, 213);
+      width: 120px;
+      background-color: rgb(138, 187, 213);
+      color: white;
+      &:hover {
+        background-color: rgb(100, 137, 157);
+        border-color: rgb(100, 137, 157);
+      }
     `}
-  &:hover {
-    background-color: rgb(100, 137, 157);
-    color: white;
-    border-color: rgb(100, 137, 157);
-  }
 `;
 
 // =================================

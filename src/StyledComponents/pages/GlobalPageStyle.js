@@ -13,7 +13,6 @@ import {
   Button,
   Container,
   // Navbar
-  PrimaryButton,
   LogoLink,
   NavLinkLv2,
   DropdownLinkLv2,
@@ -129,9 +128,9 @@ export const NavBarHeader = ({ scrollPos }) => (
               <NavLinkLv2 to="/">for developers</NavLinkLv2>
             </DropdownLinkLv2>
           </MenuDropdown>
-          <PrimaryButton headerBtn to="/login">
+          <Button headerBtn to="/login">
             login
-          </PrimaryButton>
+          </Button>
         </NavBarLinkWrapper>
       </NavBarWrapper>
     </Container>
