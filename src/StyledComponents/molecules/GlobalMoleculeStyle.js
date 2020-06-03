@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 // Container fluid
 export const ContainerFluid = styled.div`
@@ -173,6 +173,27 @@ export const DropdownLinkLv2 = styled.div`
 `;
 export const NavLinkLv1 = styled(NavLink)`
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+
+  ${(props) =>
+    props.onMobile &&
+    css`
+      padding: 15px 20px;
+      color: #4d4d4d;
+      text-shadow: none;
+      font-family: 'GreycliffCF-Bold';
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      &:hover {
+        cursor: default;
+      }
+    `}
+`;
+export const NavLinkMobileWrapperRelative = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
 `;
 
 export const MenuDropdown = styled.div`
@@ -182,6 +203,50 @@ export const MenuDropdown = styled.div`
   align-items: center;
   top: 0;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+  ${(props) =>
+    props.onMobile &&
+    css`
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      color: #4d4d4d;
+      text-shadow: none;
+      font-family: 'GreycliffCF-Bold';
+      justify-content: space-between;
+      padding: 15px 20px;
+      &:hover {
+        cursor: default;
+      }
+    `}
+    ${(props) =>
+      props.showLv2 &&
+      css`
+        svg {
+          transform: scale(-1);
+          padding-top: 0px;
+        }
+        ${DropdownLinkLv2} {
+          opacity: 1;
+          visibility: visible;
+          display: flex;
+          flex-direction: column;
+          z-index: 1;
+          background: white;
+          top: 35px;
+          padding: 0;
+          width: max-content;
+          font-family: 'GreycliffCF-Light';
+          background-color: #f8f8f8;
+          width: 100%;
+          /* width: 100%; */
+          margin-left: -20px;
+          a {
+            padding: 20px 20px;
+            /* width: 100%; */
+          }
+        }
+      `}
+
+
+    
   ${(props) =>
     props.dropDown &&
     css`
@@ -220,6 +285,12 @@ export const MenuDropdown = styled.div`
 export const NavBarWrapper = styled.div`
   display: flex;
   justify-content: space-between;
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      align-items: center;
+      justify-content: center;
+    `}
 `;
 
 export const ShowContentMobile = styled.div`
@@ -227,8 +298,11 @@ export const ShowContentMobile = styled.div`
   ${(props) =>
     props.isSmallScreen &&
     css`
-      display: block;
+      display: flex;
       color: #8abbd5;
+      position: absolute;
+      left: 30px;
+      font-size: 30px;
       &:hover {
         cursor: pointer;
       }
@@ -247,7 +321,7 @@ export const NavBarComponent = styled.div`
     /* padding: 10px 0; */
     align-items: center;
     position:fixed;
-    z-index:100;
+    z-index:2;
     width:100%;
     color: white;
     font-family: 'GreycliffCF-Bold';
@@ -259,7 +333,16 @@ export const NavBarComponent = styled.div`
       font-weight: bold;
       font-family: 'GreycliffCF-Bold';
     }
-
+    ${(props) =>
+      props.isSmallScreen &&
+      css`
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+        background: white;
+        color: #575756;
+        a {
+          color: #8abbd5;
+        }
+      `}
     ${(props) =>
       props.scrollPos &&
       css`
@@ -301,3 +384,70 @@ export const NavBarComponent = styled.div`
       }
     }
   `;
+
+export const NavLinkMobileWrapperlv1 = styled.div`
+  @keyframes fadeLeftToRight {
+    from {
+      left: -75%;
+    }
+    to {
+      left: 0;
+    }
+  }
+
+  @keyframes RightToLeft {
+    from {
+      left: 0;
+    }
+    to {
+      left: -75%;
+    }
+  }
+
+  display: none;
+  position: fixed;
+  width: 75%;
+  height: 100%;
+  background-color: white;
+  z-index: 1;
+  box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  flex-direction: column;
+  justify-content: space-between;
+  animation: RightToLeft 2s;
+  ${(props) =>
+    props.isNavVisible &&
+    css`
+      display: flex;
+      animation: fadeLeftToRight 2s;
+    `}
+  ${Button} {
+    width: 100%;
+    /* padding: 0 20px; */
+    &:hover {
+      border-color: rgb(138, 187, 213);
+      width: 120px;
+      background-color: rgb(138, 187, 213);
+      width: 100%;
+      color: white;
+      cursor: default;
+    }
+  }
+`;
+export const ButtonWrapper = styled.div`
+  padding: 0 20px;
+`;
+
+export const NavLinkMobileWrapperlv2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  padding: 75px 0 20px 0;
+`;
+
+export const NavLinkMobileContent = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const NavLinkMobileItem = styled(Link)``;

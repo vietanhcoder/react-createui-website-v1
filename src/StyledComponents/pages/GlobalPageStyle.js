@@ -21,6 +21,11 @@ import {
   NavBarLinkWrapper,
   NavBarComponent,
   ShowContentMobile,
+  NavLinkMobileWrapperlv1,
+  NavLinkMobileWrapperlv2,
+  NavLinkMobileContent,
+  ButtonWrapper,
+  NavLinkMobileWrapperRelative,
 } from '../molecules/GlobalMoleculeStyle';
 
 // Banner container Fruid
@@ -113,9 +118,9 @@ export const ItemContent = ({
 export const NavBarHeader = ({ scrollPos }) => {
   const [isNavVisible, setNavVisibility] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
-
+  const [showLv2, setShowLv2] = useState(false);
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 500px)');
+    const mediaQuery = window.matchMedia('(max-width: 1200px)');
     mediaQuery.addListener(handleMediaQueryChange);
     handleMediaQueryChange(mediaQuery);
 
@@ -134,37 +139,67 @@ export const NavBarHeader = ({ scrollPos }) => {
 
   const toggleNav = () => {
     setNavVisibility(!isNavVisible);
-    console.log(isNavVisible);
+  };
+
+  const _handleDropdownLv2 = () => {
+    setShowLv2(!showLv2);
   };
 
   return (
-    <NavBarComponent scrollPos={scrollPos}>
-      <Container>
-        <NavBarWrapper>
-          <ShowContentMobile isSmallScreen={isSmallScreen} onClick={toggleNav}>
-            <FontAwesomeIcon icon={faBars} />
-          </ShowContentMobile>
-          <LogoLink exact to="/">
-            postpay
-          </LogoLink>
-          <NavBarLinkWrapper isSmallScreen={isSmallScreen}>
-            <NavLinkLv1 to="/">how it works</NavLinkLv1>
-            <MenuDropdown dropDown>
-              postpay for business
-              <FontAwesomeIcon icon={faChevronDown} />
-              <DropdownLinkLv2>
-                <NavLinkLv2 to="/">Benefits</NavLinkLv2>
-                <NavLinkLv2 to="/">add postpay for your business</NavLinkLv2>
-                <NavLinkLv2 to="/">for developers</NavLinkLv2>
-              </DropdownLinkLv2>
-            </MenuDropdown>
-            <Button headerBtn to="/login">
-              login
-            </Button>
-          </NavBarLinkWrapper>
-        </NavBarWrapper>
-      </Container>
-    </NavBarComponent>
+    <div>
+      <NavBarComponent scrollPos={scrollPos} isSmallScreen={isSmallScreen}>
+        <Container>
+          <NavBarWrapper isSmallScreen={isSmallScreen}>
+            <ShowContentMobile isSmallScreen={isSmallScreen} onClick={toggleNav}>
+              <FontAwesomeIcon icon={faBars} />
+            </ShowContentMobile>
+            <LogoLink exact to="/">
+              postpay
+            </LogoLink>
+            <NavBarLinkWrapper isSmallScreen={isSmallScreen}>
+              <NavLinkLv1 to="/">how it works</NavLinkLv1>
+              <MenuDropdown dropDown>
+                postpay for business
+                <FontAwesomeIcon icon={faChevronDown} />
+                <DropdownLinkLv2>
+                  <NavLinkLv2 to="/">Benefits</NavLinkLv2>
+                  <NavLinkLv2 to="/">add postpay for your business</NavLinkLv2>
+                  <NavLinkLv2 to="/">for developers</NavLinkLv2>
+                </DropdownLinkLv2>
+              </MenuDropdown>
+              <Button headerBtn to="/login">
+                login
+              </Button>
+            </NavBarLinkWrapper>
+          </NavBarWrapper>
+        </Container>
+      </NavBarComponent>
+      <NavLinkMobileWrapperlv1 isNavVisible={isNavVisible}>
+        <NavLinkMobileWrapperRelative>
+          <NavLinkMobileWrapperlv2>
+            <NavLinkMobileContent>
+              <NavLinkLv1 to="/" onMobile>
+                how it works
+              </NavLinkLv1>
+              <MenuDropdown onMobile onClick={_handleDropdownLv2} showLv2={showLv2}>
+                postpay for business
+                <FontAwesomeIcon icon={faChevronDown} />
+                <DropdownLinkLv2>
+                  <NavLinkLv2 to="/">Benefits</NavLinkLv2>
+                  <NavLinkLv2 to="/">add postpay for your business</NavLinkLv2>
+                  <NavLinkLv2 to="/">for developers</NavLinkLv2>
+                </DropdownLinkLv2>
+              </MenuDropdown>
+            </NavLinkMobileContent>
+            <ButtonWrapper>
+              <Button headerBtn to="/login">
+                login
+              </Button>
+            </ButtonWrapper>
+          </NavLinkMobileWrapperlv2>
+        </NavLinkMobileWrapperRelative>
+      </NavLinkMobileWrapperlv1>
+    </div>
   );
 };
 
