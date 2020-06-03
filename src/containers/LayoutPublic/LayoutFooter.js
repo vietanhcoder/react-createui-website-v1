@@ -17,14 +17,11 @@ const LayoutFooter = () => {
    * ----- FooterItemGrouplv2
    * -------- FooterItemGroupWrapper3
    * ------------ FooterContentItemWrapper
-   *
-   *
    */
 
   const FooterNavItem = styled(Link)`
     color: #575756;
     font-family: 'GreycliffCF-Light';
-    font-size: 15px;
   `;
 
   const FooterTextItem = {

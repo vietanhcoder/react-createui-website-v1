@@ -16,6 +16,7 @@ import { NavBarHeader } from '../../StyledComponents/pages/GlobalPageStyle';
 
 const Navbar = () => {
   const [scrollPos, setScrollPos] = useState(false);
+
   const showNavBarPos = 0;
   window.onscroll = function () {
     const currentScrollPos = window.pageYOffset;
@@ -25,6 +26,7 @@ const Navbar = () => {
       setScrollPos(false);
     }
   };
+
   return (
     <div>
       <NavBarHeader scrollPos={scrollPos} />

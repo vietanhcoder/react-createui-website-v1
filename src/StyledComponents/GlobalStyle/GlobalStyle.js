@@ -4,6 +4,11 @@ import GreycliffCFBold from '../../fonts/GreycliffCF-Bold.otf';
 import GreycliffCFLight from '../../fonts/GreycliffCF-Light.otf';
 import GreycliffCFRegular from '../../fonts/GreycliffCF-Regular.otf';
 
+export const SCREENSIZES = {
+  desktop: '@media screen and (min-width: 500px)',
+  mobile: '@media screen and (max-width: 500px)',
+  smallerMobile: '@media screen and (max-width: 320px)',
+};
 // import icomoonEot from '../../fonts/icomoon/fonts/icomoon.eot';
 // import icomoonSvg from '../../fonts/icomoon/fonts/icomoon.svg';
 // import icomoonTtf from '../../fonts/icomoon/fonts/icomoon.ttf';
@@ -43,9 +48,12 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: 400;
     font-style: normal;
   }
+  html{
+    font-size: 62.5%;
+  }
   body{
     box-sizing: border-box;
-    font-size: 16px;
+    font-size: 1.6rem;
     font-family: 'GreycliffCF-Light','Helvetica Neue',helvetica,Arial, sans-serif;
     color: #575756;
     font-weight: 400;
@@ -63,14 +71,14 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1;
     margin: 0;
   }
-
+ 
 
   h2 {
-    font-size:35px;
+    font-size:3.5rem;
     color: #575756;
   }
   h3{
-    font-size:28px;
+    font-size:2.8rem;
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
@@ -81,7 +89,7 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
   h4{
-    font-size: 20px;
+    font-size: 2rem;
     font-family: GreycliffCF-Bold;
     margin-bottom: 20px;
     color: #4d4d4d;
@@ -100,7 +108,7 @@ export const GlobalStyle = createGlobalStyle`
     font-weight: normal;
     font-stretch: normal;
     font-style: normal;
-    line-height: 1;
+    line-height: 1.1;
     text-align: left;
   }
   ul,li{

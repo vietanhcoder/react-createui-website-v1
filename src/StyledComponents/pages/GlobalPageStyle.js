@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown } from '@fortawesome/fontawesome-free-solid';
-
+import { faChevronDown, faBars } from '@fortawesome/fontawesome-free-solid';
 import {
   ContainerFluid,
   BannerWrapper,
@@ -21,6 +20,7 @@ import {
   NavBarWrapper,
   NavBarLinkWrapper,
   NavBarComponent,
+  ShowContentMobile,
 } from '../molecules/GlobalMoleculeStyle';
 
 // Banner container Fruid
@@ -108,34 +108,66 @@ export const ItemContent = ({
   </ItemColumnWrapper>
 );
 // =================================================================
-//  section About post pay
+//  section Nav
 // =================================================================
-export const NavBarHeader = ({ scrollPos }) => (
-  <NavBarComponent scrollPos={scrollPos}>
-    <Container>
-      <NavBarWrapper>
-        <LogoLink exact to="/">
-          postpay
-        </LogoLink>
-        <NavBarLinkWrapper>
-          <NavLinkLv1 to="/">how it works</NavLinkLv1>
-          <MenuDropdown dropDown>
-            postpay for business
-            <FontAwesomeIcon icon={faChevronDown} />
-            <DropdownLinkLv2>
-              <NavLinkLv2 to="/">Benefits</NavLinkLv2>
-              <NavLinkLv2 to="/">add postpay for your business</NavLinkLv2>
-              <NavLinkLv2 to="/">for developers</NavLinkLv2>
-            </DropdownLinkLv2>
-          </MenuDropdown>
-          <Button headerBtn to="/login">
-            login
-          </Button>
-        </NavBarLinkWrapper>
-      </NavBarWrapper>
-    </Container>
-  </NavBarComponent>
-);
+export const NavBarHeader = ({ scrollPos }) => {
+  const [isNavVisible, setNavVisibility] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 500px)');
+    mediaQuery.addListener(handleMediaQueryChange);
+    handleMediaQueryChange(mediaQuery);
+
+    return () => {
+      mediaQuery.removeListener(handleMediaQueryChange);
+    };
+  }, []);
+
+  const handleMediaQueryChange = (mediaQuery) => {
+    if (mediaQuery.matches) {
+      setIsSmallScreen(true);
+    } else {
+      setIsSmallScreen(false);
+    }
+  };
+
+  const toggleNav = () => {
+    setNavVisibility(!isNavVisible);
+    console.log(isNavVisible);
+  };
+
+  return (
+    <NavBarComponent scrollPos={scrollPos}>
+      <Container>
+        <NavBarWrapper>
+          <ShowContentMobile isSmallScreen={isSmallScreen} onClick={toggleNav}>
+            <FontAwesomeIcon icon={faBars} />
+          </ShowContentMobile>
+          <LogoLink exact to="/">
+            postpay
+          </LogoLink>
+          <NavBarLinkWrapper isSmallScreen={isSmallScreen}>
+            <NavLinkLv1 to="/">how it works</NavLinkLv1>
+            <MenuDropdown dropDown>
+              postpay for business
+              <FontAwesomeIcon icon={faChevronDown} />
+              <DropdownLinkLv2>
+                <NavLinkLv2 to="/">Benefits</NavLinkLv2>
+                <NavLinkLv2 to="/">add postpay for your business</NavLinkLv2>
+                <NavLinkLv2 to="/">for developers</NavLinkLv2>
+              </DropdownLinkLv2>
+            </MenuDropdown>
+            <Button headerBtn to="/login">
+              login
+            </Button>
+          </NavBarLinkWrapper>
+        </NavBarWrapper>
+      </Container>
+    </NavBarComponent>
+  );
+};
+
 // Section
 export const SectionWrapper = styled.div`
   width: 100%;
