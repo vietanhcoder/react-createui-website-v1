@@ -175,7 +175,7 @@ export const Button = styled.button`
     `}
 
   ${(props) =>
-    props.headerBtn &&
+    props.primaryBtn &&
     css`
       text-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
       border-color: rgb(138, 187, 213);
@@ -186,6 +186,10 @@ export const Button = styled.button`
         background-color: rgb(100, 137, 157);
         border-color: rgb(100, 137, 157);
       }
+    `}
+    ${(props) =>
+    props.primaryBtn && props.big && css`
+    width:100%
     `}
 `;
 
@@ -548,12 +552,13 @@ export const FormSubscription = styled.div`
 
 export const FormContentWrapper = styled.div`
     width: 100%;
-    
+    margin-top: 5px;
     ${(props) =>
     props.nameComponent === 'Subscription' &&
     css`
          width:70%;
          margin-right: 20px;
+         margin-top: 0px;
         `}
   `;
 export const FormFieldSet = styled.fieldset`

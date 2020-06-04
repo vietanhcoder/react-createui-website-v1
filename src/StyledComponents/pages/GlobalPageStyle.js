@@ -187,7 +187,7 @@ export const NavBarHeader = ({ scrollPos }) => {
                   <NavLinkLv2 to="/">for developers</NavLinkLv2>
                 </DropdownLinkLv2>
               </MenuDropdown>
-              <Button headerBtn to="/login">
+              <Button primaryBtn to="/login">
                 login
               </Button>
             </NavBarLinkWrapper>
@@ -392,23 +392,39 @@ export const SectionDescription = styled.div``;
 //  section contact us
 // =================================================================
 
-
-export const LegendForm = ({ legendnameBtn, legendTitle, nameComponent, attrName }) => {
+export const TextareaContent = styled.textarea`
+width: 100%;
+min-height: 90px;
+box-sizing: border-box;
+padding: 3px 10px 5px 15px;
+border-width: initial;
+border-style: none;
+border-color: initial;
+border-image: initial;
+outline: none;
+background: transparent;
+`
+export const LegendForm = ({ legendnameBtn, legendTitle, textarea, nameComponent, attrName }) => {
   const [isSmallScreen, setIsSmallScreen] = useContext(WidthPageContext);
   return (
     <FormSubscription attrName={attrName} isSmallScreen={isSmallScreen}>
       <FormContentWrapper nameComponent={nameComponent}>
         <FormFieldSet>
           <FormLegend>{legendTitle}</FormLegend>
-          <FormInputWrapper>
+          {textarea ? <TextareaContent /> : (<FormInputWrapper>
             <FormContentInput />
-          </FormInputWrapper>
+          </FormInputWrapper>)}
+
+
         </FormFieldSet>
       </FormContentWrapper>
       {legendnameBtn ? <Button subscribeBtn>{legendnameBtn}</Button> : null}
     </FormSubscription>
   )
 }
+
+
+
 
 export const FormAllContent = ({ desForm, children }) => {
   return (

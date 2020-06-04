@@ -18,6 +18,13 @@ const ContactUs = () => {
   `
   const FormWrapperlv2 = styled.div`
     width: 100%;
+    text-align: left;
+    ${(props) =>
+      props.buttonWrapper &&
+      css`
+      margin-top: 25px;
+      width: 200px;
+      `}
   `
   const FormWrapperlv3 = styled.div`
   display: flex;
@@ -56,11 +63,12 @@ const ContactUs = () => {
 
               <LegendForm
                 legendTitle="message"
+                textarea
               ></LegendForm>
 
             </FormWrapperlv2>
-            <FormWrapperlv2>
-              <Button>
+            <FormWrapperlv2 buttonWrapper>
+              <Button primaryBtn big>
                 send
               </Button>
             </FormWrapperlv2>
