@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faBars } from '@fortawesome/fontawesome-free-solid';
 import { WidthPageContext } from '../../useContext/UseContext';
@@ -28,6 +28,9 @@ import {
   ButtonWrapper,
   NavLinkMobileWrapperRelative,
   Overlay,
+  DesForm,
+  FormInputWrapper, FormContentInput, FormLegend, FormFieldSet, FormSubscription, FormContentWrapper,
+  Form
 } from '../molecules/GlobalMoleculeStyle';
 
 // Banner container Fruid
@@ -80,16 +83,29 @@ export const SectionAboutPostPay = ({ url, titleSection, subTitleSection, descri
 };
 
 // Section how it works
+export const SectionWrapper = styled.div`
+  width: 100%;
+  padding: 80px 0;
+  ${props => props.nameComponent === 'contactUs' && css`
+  text-align: center;
+  background: #f5f6f7;
+    ${TitleSection}{
+      padding-bottom: 0;
+    }
+  `}
+`;
 
-export const SectionComponent = ({ titleSection, children, alignCenter }) => {
+export const SectionComponent = ({ titleSection,
+  children, alignCenter, nameComponent
+}) => {
   const [isSmallScreen, setIsSmallScreen] = useContext(WidthPageContext);
   return (
-    <SectionWrapper>
+    <SectionWrapper nameComponent={nameComponent}>
       <Container isSmallScreen={isSmallScreen}>
         <TitleSection center="center" padding_bottom="padding_bottom" isSmallScreen={isSmallScreen}>
           {titleSection}
         </TitleSection>
-        <SectionBodyWrapper isSmallScreen={isSmallScreen} alignCenter={alignCenter}>
+        <SectionBodyWrapper nameComponent={nameComponent} isSmallScreen={isSmallScreen} alignCenter={alignCenter}>
           {children}
         </SectionBodyWrapper>
       </Container>
@@ -208,10 +224,9 @@ export const NavBarHeader = ({ scrollPos }) => {
 };
 
 // Section
-export const SectionWrapper = styled.div`
-  width: 100%;
-  padding: 80px 0;
-`;
+
+
+
 
 export const TitleSection = styled.h2`
   ${(props) =>
@@ -292,12 +307,18 @@ export const ItemColumnWrapper = styled.li`
   max-width: 300px;
 `;
 
-export const SectionBodyWrapper = styled.ul`
+export const SectionBodyWrapper = styled.div`
   display: flex;
   align-items: baseline;
   justify-content: space-between;
   width: 100%;
-
+  ${(props) =>
+    props.nameComponent === 'contactUs' &&
+    css`
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    `}
   ${(props) =>
     props.isSmallScreen &&
     css`
@@ -366,3 +387,36 @@ export const SectionSubtitle = styled.h3`
 `;
 
 export const SectionDescription = styled.div``;
+
+// =================================================================
+//  section contact us
+// =================================================================
+
+
+export const LegendForm = ({ legendnameBtn, legendTitle, nameComponent, attrName }) => {
+  const [isSmallScreen, setIsSmallScreen] = useContext(WidthPageContext);
+  return (
+    <FormSubscription attrName={attrName} isSmallScreen={isSmallScreen}>
+      <FormContentWrapper nameComponent={nameComponent}>
+        <FormFieldSet>
+          <FormLegend>{legendTitle}</FormLegend>
+          <FormInputWrapper>
+            <FormContentInput />
+          </FormInputWrapper>
+        </FormFieldSet>
+      </FormContentWrapper>
+      {legendnameBtn ? <Button subscribeBtn>{legendnameBtn}</Button> : null}
+    </FormSubscription>
+  )
+}
+
+export const FormAllContent = ({ desForm, children }) => {
+  return (
+    <>
+      {desForm ? <DesForm>{desForm}</DesForm> : null}
+      <Form>
+        {children}
+      </Form>
+    </>
+  )
+}

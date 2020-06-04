@@ -6,7 +6,7 @@ import {
   SectionComponent,
   SectionTwoColumn,
 } from '../../StyledComponents/pages/GlobalPageStyle';
-
+import ContactUs from './ContactUs'
 import plushuman from '../../img/plushuman.svg';
 import flight from '../../img/flight.svg';
 import handle from '../../img/hand.svg';
@@ -101,6 +101,8 @@ const Home = () => {
         href="#"
         nameBtn="learn more"
       />
+
+      <ContactUs />
     </div>
   );
 };

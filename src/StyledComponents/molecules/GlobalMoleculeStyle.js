@@ -112,9 +112,9 @@ export const BannerTextWrapper = styled.div`
       }
     `}
     ${(props) =>
-      props.sectionCTA &&
-      props.isSmallScreen &&
-      css`
+    props.sectionCTA &&
+    props.isSmallScreen &&
+    css`
       width: 100%;
       max-width: 299px;
         ${Headline} {
@@ -264,8 +264,8 @@ export const MenuDropdown = styled.div`
       }
     `}
     ${(props) =>
-      props.showLv2 &&
-      css`
+    props.showLv2 &&
+    css`
         svg {
           transform: scale(-1);
           padding-top: 0px;
@@ -381,8 +381,8 @@ export const NavBarComponent = styled.div`
       font-family: 'GreycliffCF-Bold';
     }
     ${(props) =>
-      props.isSmallScreen &&
-      css`
+    props.isSmallScreen &&
+    css`
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
         background: white;
         color: #575756;
@@ -391,8 +391,8 @@ export const NavBarComponent = styled.div`
         }
       `}
     ${(props) =>
-      props.scrollPos &&
-      css`
+    props.scrollPos &&
+    css`
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
         background: white;
         color: #575756;
@@ -517,3 +517,87 @@ export const Overlay = styled.div`
     position: absolute;
   }
 `;
+
+
+// Form
+
+export const FormSubscription = styled.div`
+    display: flex;
+    ${(props) =>
+    props.attrName === 'halfwidth' &&
+    css`
+          width:49.5%
+        `}
+
+
+    ${(props) =>
+    props.isSmallScreen &&
+    css`
+        flex-direction: column;
+        ${FormContentWrapper} {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+        ${Button} {
+          border-color: rgb(87, 87, 86);
+          color: rgb(87, 87, 86);
+          font-family: 'GreycliffCF-Bold';
+        }
+      `}
+  `;
+
+export const FormContentWrapper = styled.div`
+    width: 100%;
+    
+    ${(props) =>
+    props.nameComponent === 'Subscription' &&
+    css`
+         width:70%;
+         margin-right: 20px;
+        `}
+  `;
+export const FormFieldSet = styled.fieldset`
+    background-color: white;
+    position: relative;
+    border-style: solid;
+    border-color: rgb(213, 213, 213);
+    border-image: initial;
+    border-width: 1px;
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+  `;
+export const FormLegend = styled.legend`
+    width: max-content;
+    margin-left: 10px;
+    margin-bottom: 0px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    text-align: left;
+    color: rgb(170, 170, 170);
+    padding: 0px 5px;
+  `;
+export const FormInputWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    padding: 3px 10px 5px 15px;
+  `;
+export const FormContentInput = styled.input`
+    flex-grow: 1;
+    width: 100%;
+    box-sizing: border-box;
+    border-width: initial;
+    border-style: none;
+    border-color: initial;
+    border-image: initial;
+    background: transparent;
+    outline: none;
+  `;
+export const DesForm = styled.p`
+    display: flex;
+    font-size: 0.8rem;
+    font-style: italic;
+    color: #aaaaaa;
+    margin-bottom: 5px;
+  `
+export const Form = styled.form``

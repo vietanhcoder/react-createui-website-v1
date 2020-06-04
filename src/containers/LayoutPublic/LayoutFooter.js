@@ -3,7 +3,7 @@ import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Container, Button } from '../../StyledComponents/molecules/GlobalMoleculeStyle';
 import { WidthPageContext } from '../../useContext/UseContext';
-
+import { LegendForm, FormAllContent } from '../../StyledComponents/pages/GlobalPageStyle'
 import insta from '../../img/insta.svg';
 import linkedin from '../../img/linkedin.svg';
 import snapchat from '../../img/snapchat.svg';
@@ -121,8 +121,8 @@ const LayoutFooter = () => {
         align-items: flex-end;
       `}
       ${(props) =>
-        props.isSmallScreen &&
-        css`
+      props.isSmallScreen &&
+      css`
           padding: 0;
           flex-direction: column;
           ${FooterItemGrouplv2} {
@@ -143,9 +143,9 @@ const LayoutFooter = () => {
             }
           }
           ${(props) =>
-            props.isSmallScreen &&
-            props.footerSubscribe &&
-            css`
+          props.isSmallScreen &&
+          props.footerSubscribe &&
+          css`
               width: 100%;
               margin-top: 20px;
               p {
@@ -155,64 +155,6 @@ const LayoutFooter = () => {
         `}
   `;
 
-  const FormSubscription = styled.form`
-    display: flex;
-    ${(props) =>
-      props.isSmallScreen &&
-      css`
-        flex-direction: column;
-        ${FormContentWrapper} {
-          width: 100%;
-          margin-bottom: 10px;
-        }
-        ${Button} {
-          border-color: rgb(87, 87, 86);
-          color: rgb(87, 87, 86);
-          font-family: 'GreycliffCF-Bold';
-        }
-      `}
-  `;
-  const FormContentWrapper = styled.div`
-    width: 70%;
-    margin-right: 20px;
-  `;
-  const FormFieldSet = styled.fieldset`
-    background-color: white;
-    position: relative;
-    border-style: solid;
-    border-color: rgb(213, 213, 213);
-    border-image: initial;
-    border-width: 1px;
-    border-radius: 5px;
-    margin: 0;
-    padding: 0;
-  `;
-  const FormLegend = styled.legend`
-    width: max-content;
-    margin-left: 10px;
-    margin-bottom: 0px;
-    font-size: 0.7rem;
-    font-weight: 500;
-    text-align: left;
-    color: rgb(170, 170, 170);
-    padding: 0px 5px;
-  `;
-  const FormInputWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    padding: 3px 10px 5px 15px;
-  `;
-  const FormContentInput = styled.input`
-    flex-grow: 1;
-    width: 100%;
-    box-sizing: border-box;
-    border-width: initial;
-    border-style: none;
-    border-color: initial;
-    border-image: initial;
-    background: transparent;
-    outline: none;
-  `;
 
   const FooterContentWrapper = styled.div`
     display: flex;
@@ -228,93 +170,89 @@ const LayoutFooter = () => {
 
   const FooterComponent = () => (
     <Container isSmallScreen={isSmallScreen}>
-      <FooterContentWrapper isSmallScreen={isSmallScreen}>
-        {/* footer footerNav */}
-        <FooterItemGrouplv1 isSmallScreen={isSmallScreen}>
-          <FooterItemGrouplv2 contactUs>
-            <FooterItemGroupWrapper3>
-              connect with us
+      <FormAllContent>
+
+        <FooterContentWrapper isSmallScreen={isSmallScreen} nameComponent="nameComponent">
+          {/* footer footerNav */}
+          <FooterItemGrouplv1 isSmallScreen={isSmallScreen}>
+            <FooterItemGrouplv2 contactUs>
+              <FooterItemGroupWrapper3>
+                connect with us
               <FooterContentItemWrapper socialLink>
-                <FooterNavItem to="/">
-                  <img src={linkedin} alt="linkedin" />
-                </FooterNavItem>
-                <FooterNavItem to="/">
-                  <img src={insta} alt="instagram" />
-                </FooterNavItem>
-                <FooterNavItem to="/">
-                  <img src={twitter} alt="twitter" />
-                </FooterNavItem>
-                <FooterNavItem to="/">
-                  <img src={snapchat} alt="snapchat" />
-                </FooterNavItem>
-              </FooterContentItemWrapper>
-            </FooterItemGroupWrapper3>
-            <FooterItemGroupWrapper3>
-              contact us
+                  <FooterNavItem to="/">
+                    <img src={linkedin} alt="linkedin" />
+                  </FooterNavItem>
+                  <FooterNavItem to="/">
+                    <img src={insta} alt="instagram" />
+                  </FooterNavItem>
+                  <FooterNavItem to="/">
+                    <img src={twitter} alt="twitter" />
+                  </FooterNavItem>
+                  <FooterNavItem to="/">
+                    <img src={snapchat} alt="snapchat" />
+                  </FooterNavItem>
+                </FooterContentItemWrapper>
+              </FooterItemGroupWrapper3>
+              <FooterItemGroupWrapper3>
+                contact us
               <FooterContentItemWrapper>
-                {
-                  <p style={FooterTextItem}>
-                    contact us and one of our dedicated <Link>support</Link> team will get in touch
+                  {
+                    <p style={FooterTextItem}>
+                      contact us and one of our dedicated <Link>support</Link> team will get in touch
                     with you
                   </p>
-                }
-              </FooterContentItemWrapper>
-            </FooterItemGroupWrapper3>
-          </FooterItemGrouplv2>
+                  }
+                </FooterContentItemWrapper>
+              </FooterItemGroupWrapper3>
+            </FooterItemGrouplv2>
 
-          <FooterItemGrouplv2 information>
-            about postpay
+            <FooterItemGrouplv2 information>
+              about postpay
             <FooterContentItemWrapper information>
-              <FooterNavItem to="/">about us</FooterNavItem>
-              <FooterNavItem to="/">careers</FooterNavItem>
-              <FooterNavItem to="/">PCI DSS</FooterNavItem>
-              <FooterNavItem to="/">investors</FooterNavItem>
-            </FooterContentItemWrapper>
-          </FooterItemGrouplv2>
-
-          <FooterItemGrouplv2 companies>
-            <FooterItemGroupWrapper3>
-              postpay for shoppers
-              <FooterContentItemWrapper>
-                <FooterNavItem to="/">how it works</FooterNavItem>
-                <FooterNavItem to="/">responsible spending</FooterNavItem>
+                <FooterNavItem to="/">about us</FooterNavItem>
+                <FooterNavItem to="/">careers</FooterNavItem>
+                <FooterNavItem to="/">PCI DSS</FooterNavItem>
+                <FooterNavItem to="/">investors</FooterNavItem>
               </FooterContentItemWrapper>
-            </FooterItemGroupWrapper3>
+            </FooterItemGrouplv2>
 
-            <FooterItemGroupWrapper3>
-              postpay for business
+            <FooterItemGrouplv2 companies>
+              <FooterItemGroupWrapper3>
+                postpay for shoppers
               <FooterContentItemWrapper>
-                <FooterNavItem to="/">benefits</FooterNavItem>
-                <FooterNavItem to="/">add postpay to your business</FooterNavItem>
-                <FooterNavItem to="/">for developers</FooterNavItem>
-              </FooterContentItemWrapper>
-            </FooterItemGroupWrapper3>
-          </FooterItemGrouplv2>
-        </FooterItemGrouplv1>
-        {/* email subscribe */}
-        <FooterItemGrouplv1 footerSubscribe isSmallScreen>
-          <FooterContentItemWrapper isSmallScreen={isSmallScreen} mt_0>
-            keep up to date
+                  <FooterNavItem to="/">how it works</FooterNavItem>
+                  <FooterNavItem to="/">responsible spending</FooterNavItem>
+                </FooterContentItemWrapper>
+              </FooterItemGroupWrapper3>
+
+              <FooterItemGroupWrapper3>
+                postpay for business
+              <FooterContentItemWrapper>
+                  <FooterNavItem to="/">benefits</FooterNavItem>
+                  <FooterNavItem to="/">add postpay to your business</FooterNavItem>
+                  <FooterNavItem to="/">for developers</FooterNavItem>
+                </FooterContentItemWrapper>
+              </FooterItemGroupWrapper3>
+            </FooterItemGrouplv2>
+          </FooterItemGrouplv1>
+          {/* email subscribe */}
+          <FooterItemGrouplv1 footerSubscribe isSmallScreen>
+            <FooterContentItemWrapper isSmallScreen={isSmallScreen} mt_0>
+              keep up to date
             {
-              <p style={FooterTextItem}>
-                sign up to our newsletter to receive updates on new store additions and special
-                rates
+                <p style={FooterTextItem}>
+                  sign up to our newsletter to receive updates on new store additions and special
+                  rates
               </p>
-            }
-            <FormSubscription isSmallScreen={isSmallScreen}>
-              <FormContentWrapper>
-                <FormFieldSet>
-                  <FormLegend>email</FormLegend>
-                  <FormInputWrapper>
-                    <FormContentInput />
-                  </FormInputWrapper>
-                </FormFieldSet>
-              </FormContentWrapper>
-              <Button subscribeBtn>subscribe</Button>
-            </FormSubscription>
-          </FooterContentItemWrapper>
-        </FooterItemGrouplv1>
-      </FooterContentWrapper>
+              }
+              <LegendForm
+                legendTitle="email"
+                legendnameBtn="Subcscribe"
+              />
+            </FooterContentItemWrapper>
+          </FooterItemGrouplv1>
+        </FooterContentWrapper>
+      </FormAllContent>
     </Container>
   );
 
