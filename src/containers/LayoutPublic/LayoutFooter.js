@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
-
 import { Container, Button } from '../../StyledComponents/molecules/GlobalMoleculeStyle';
+import { WidthPageContext } from '../../useContext/UseContext';
+
 import insta from '../../img/insta.svg';
 import linkedin from '../../img/linkedin.svg';
 import snapchat from '../../img/snapchat.svg';
@@ -18,6 +19,7 @@ const LayoutFooter = () => {
    * -------- FooterItemGroupWrapper3
    * ------------ FooterContentItemWrapper
    */
+  const [isSmallScreen, setIsSmallScreen] = useContext(WidthPageContext);
 
   const FooterNavItem = styled(Link)`
     color: #575756;
@@ -26,8 +28,8 @@ const LayoutFooter = () => {
 
   const FooterTextItem = {
     fontFamily: 'GreycliffCF-Light',
-    marginTop: '15px',
-    marginBottom: '15px',
+    marginTop: '5px',
+    marginBottom: '5px',
   };
 
   const FooterItemGroupWrapper3 = styled.div`
@@ -108,15 +110,38 @@ const LayoutFooter = () => {
         flex-direction: column;
         align-items: flex-end;
       `}
-  `;
-
-  const FooterContentWrapper = styled.div`
-    display: flex;
-    padding: 60px 0;
+      ${(props) =>
+        props.isSmallScreen &&
+        css`
+          padding: 0;
+          flex-direction: column;
+          ${FooterItemGrouplv2} {
+            width: 100%;
+            padding: 0;
+            margin-top: 20px;
+          }
+          ${FooterItemGroupWrapper3} {
+            width: 100%;
+          }
+          ${FooterNavItem} {
+            max-width: 100%;
+          }
+          ${FooterContentItemWrapper} {
+            margin-top: 0px;
+            a:first-child {
+              margin-top: 10px;
+            }
+          }
+        `}
   `;
 
   const FormSubscription = styled.form`
     display: flex;
+    ${(props) =>
+      props.isSmallScreen &&
+      css`
+        flex-direction: column;
+      `}
   `;
   const FormContentWrapper = styled.div`
     width: 70%;
@@ -160,11 +185,22 @@ const LayoutFooter = () => {
     outline: none;
   `;
 
+  const FooterContentWrapper = styled.div`
+    display: flex;
+    padding: 60px 0;
+    ${(props) =>
+      props.isSmallScreen &&
+      css`
+        flex-direction: column;
+        padding-top: 20px;
+      `}
+  `;
+
   const FooterComponent = () => (
-    <Container>
-      <FooterContentWrapper>
+    <Container isSmallScreen={isSmallScreen}>
+      <FooterContentWrapper isSmallScreen={isSmallScreen}>
         {/* footer footerNav */}
-        <FooterItemGrouplv1>
+        <FooterItemGrouplv1 isSmallScreen={isSmallScreen}>
           <FooterItemGrouplv2 contactUs>
             <FooterItemGroupWrapper3>
               connect with us
@@ -235,7 +271,7 @@ const LayoutFooter = () => {
                 rates
               </p>
             }
-            <FormSubscription>
+            <FormSubscription isSmallScreen={isSmallScreen}>
               <FormContentWrapper>
                 <FormFieldSet>
                   <FormLegend>email</FormLegend>

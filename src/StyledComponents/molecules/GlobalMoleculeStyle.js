@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { NavLink, Link } from 'react-router-dom';
-
 // Container fluid
+
 export const ContainerFluid = styled.div`
   width: 100%;
   padding-left: 0;
@@ -14,6 +14,11 @@ export const ContainerFluid = styled.div`
 export const Container = styled.div`
   margin: 0 auto;
   padding: 0 10rem;
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      padding: 0 2rem;
+    `}
 `;
 
 // Hero banner
@@ -84,7 +89,6 @@ export const BannerTextWrapper = styled.div`
       ${BannerSubTitle} {
         margin-bottom: 25px;
         line-height: 20px;
-        color: #252524;
         font-size: 2rem;
       }
     `}
@@ -107,6 +111,32 @@ export const BannerTextWrapper = styled.div`
         font-size: 2rem;
       }
     `}
+    ${(props) =>
+      props.sectionCTA &&
+      props.isSmallScreen &&
+      css`
+      width: 100%;
+      max-width: 299px;
+        ${Headline} {
+          font-size: 2rem;
+          margin-bottom: 0;
+        }
+        ${BannerTitle} {
+          font-size: 2.5rem;
+          line-height: 25px;
+        }
+        ${BannerSubTitle} {
+          margin-bottom: 25px;
+          line-height: 20px;
+          color: #252524;
+          font-size: 1.5rem;
+        }
+        ${Button} {
+          padding: 10px 15px;
+          width: 200px;
+        }
+      }
+      `}
 `;
 
 export const Headline = styled.div`

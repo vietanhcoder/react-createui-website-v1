@@ -44,7 +44,7 @@ export const BannerFruid = ({
   const [isSmallScreen, setIsSmallScreen] = useContext(WidthPageContext);
   return (
     <ContainerFluid>
-      <BannerWrapper overlay={overlay} big={big} img={url}>
+      <BannerWrapper overlay={overlay} big={big} img={url} isSmallScreen={isSmallScreen}>
         <BannerTextWrapper sectionCTA={sectionCTA} isSmallScreen={isSmallScreen}>
           {headline ? <Headline>{headline}</Headline> : null}
           <BannerTitle sectionCTA={sectionCTA}>{BannerTitleText}</BannerTitle>
@@ -58,41 +58,54 @@ export const BannerFruid = ({
 
 // Section about post pay
 
-export const SectionAboutPostPay = ({ url, titleSection, subTitleSection, descriptionSection }) => (
-  <Container>
-    <SectionBodyWrapper alignCenter>
-      <SectionTwoElementsImgWrapper>
-        <img src={url} alt="handup" />
-      </SectionTwoElementsImgWrapper>
-      <SectionTwoElementsTextWrapper>
-        <TitleSection>{titleSection}</TitleSection>
-        <SectionSubtitle>{subTitleSection}</SectionSubtitle>
-        <SectionDescription>{descriptionSection}</SectionDescription>
-      </SectionTwoElementsTextWrapper>
-    </SectionBodyWrapper>
-  </Container>
-);
+export const SectionAboutPostPay = ({ url, titleSection, subTitleSection, descriptionSection }) => {
+  const [isSmallScreen, setIsSmallScreen] = useContext(WidthPageContext);
+  return (
+    <Container isSmallScreen={isSmallScreen}>
+      <SectionBodyWrapper alignCenter isSmallScreen={isSmallScreen}>
+        <SectionTwoElementsImgWrapper>
+          <img src={url} alt="handup" />
+        </SectionTwoElementsImgWrapper>
+        <SectionTwoElementsTextWrapper>
+          <TitleSection isSmallScreen={isSmallScreen}>{titleSection}</TitleSection>
+          <SectionSubtitle isSmallScreen={isSmallScreen}>{subTitleSection}</SectionSubtitle>
+          <SectionDescription isSmallScreen={isSmallScreen}>
+            {descriptionSection}
+          </SectionDescription>
+        </SectionTwoElementsTextWrapper>
+      </SectionBodyWrapper>
+    </Container>
+  );
+};
 
 // Section how it works
 
-export const SectionComponent = ({ titleSection, children, alignCenter }) => (
-  <SectionWrapper>
-    <Container>
-      <TitleSection center="center" padding_bottom="padding_bottom">
-        {titleSection}
-      </TitleSection>
-      <SectionBodyWrapper alignCenter={alignCenter}>{children}</SectionBodyWrapper>
-    </Container>
-  </SectionWrapper>
-);
+export const SectionComponent = ({ titleSection, children, alignCenter }) => {
+  const [isSmallScreen, setIsSmallScreen] = useContext(WidthPageContext);
+  return (
+    <SectionWrapper>
+      <Container isSmallScreen={isSmallScreen}>
+        <TitleSection center="center" padding_bottom="padding_bottom" isSmallScreen={isSmallScreen}>
+          {titleSection}
+        </TitleSection>
+        <SectionBodyWrapper isSmallScreen={isSmallScreen} alignCenter={alignCenter}>
+          {children}
+        </SectionBodyWrapper>
+      </Container>
+    </SectionWrapper>
+  );
+};
 
-export const SectionTwoColumn = ({ children, alignCenter }) => (
-  <SectionWrapper>
-    <Container>
-      <SectionBodyWrapper alignCenter={alignCenter}>{children}</SectionBodyWrapper>
+export const SectionTwoColumn = ({ children, alignCenter }) => {
+  const [isSmallScreen, setIsSmallScreen] = useContext(WidthPageContext);
+  return (
+    <Container isSmallScreen={isSmallScreen}>
+      <SectionBodyWrapper isSmallScreen={isSmallScreen} alignCenter={alignCenter}>
+        {children}
+      </SectionBodyWrapper>
     </Container>
-  </SectionWrapper>
-);
+  );
+};
 
 // ItemContent
 export const ItemContent = ({
@@ -103,17 +116,22 @@ export const ItemContent = ({
   newAttr,
   centerImg,
   bigImgMb,
-}) => (
-  <ItemColumnWrapper>
-    <ImageItem bigImg={newAttr} centerImg={centerImg}>
-      <img src={url} alt={alt} />
-    </ImageItem>
-    <TitleItem bigImgMb={bigImgMb}>{titleItem}</TitleItem>
-    <DesTitleItem center="center" padding_bottom="padding_bottom">
-      {desTitleItem}
-    </DesTitleItem>
-  </ItemColumnWrapper>
-);
+}) => {
+  const [isSmallScreen, setIsSmallScreen] = useContext(WidthPageContext);
+  return (
+    <ItemColumnWrapper isSmallScreen={isSmallScreen}>
+      <ImageItem bigImg={newAttr} centerImg={centerImg}>
+        <img src={url} alt={alt} />
+      </ImageItem>
+      <TitleItem isSmallScreen={isSmallScreen} bigImgMb={bigImgMb}>
+        {titleItem}
+      </TitleItem>
+      <DesTitleItem center="center" padding_bottom="padding_bottom">
+        {desTitleItem}
+      </DesTitleItem>
+    </ItemColumnWrapper>
+  );
+};
 // =================================================================
 //  section Nav
 // =================================================================
@@ -133,7 +151,7 @@ export const NavBarHeader = ({ scrollPos }) => {
   return (
     <div>
       <NavBarComponent scrollPos={scrollPos} isSmallScreen={isSmallScreen}>
-        <Container>
+        <Container isSmallScreen={isSmallScreen}>
           <NavBarWrapper isSmallScreen={isSmallScreen}>
             <ShowContentMobile isSmallScreen={isSmallScreen} onClick={toggleNav}>
               <FontAwesomeIcon icon={faBars} />
@@ -199,11 +217,13 @@ export const TitleSection = styled.h2`
     props.center &&
     css`
       text-align: center;
+      padding-bottom: 60px;
     `}
   ${(props) =>
-    props.padding_bottom &&
+    props.isSmallScreen &&
     css`
-      padding-bottom: 60px;
+      font-size: 3rem;
+      padding-bottom: 10px;
     `}
 `;
 
@@ -242,9 +262,14 @@ export const TitleItem = styled.h4`
   margin-bottom: 30px;
   min-height: 34px;
   ${(props) =>
-    props.bigImgMb &&
+    props.isSmallScreen &&
     css`
       margin-bottom: 30px;
+    `}
+  ${(props) =>
+    props.bigImgMb &&
+    css`
+      margin-bottom: 15px;
       max-width: 220px;
     `}
 `;
@@ -271,6 +296,40 @@ export const SectionBodyWrapper = styled.ul`
   align-items: baseline;
   justify-content: space-between;
   width: 100%;
+
+  ${(props) =>
+    props.isSmallScreen &&
+    css`
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+      ${ItemColumnWrapper} {
+        width: 100%;
+        margin-top: 20px;
+
+        ${ImageItem} {
+          width: 100%;
+          max-width: 300px;
+          margin-top: 20px;
+          margin-bottom: 10px;
+        }
+      }
+      ${SectionTwoElementsImgWrapper} {
+        img {
+          width: 300px;
+        }
+      }
+      ${SectionTwoElementsTextWrapper} {
+        width: 100%;
+      }
+      ${TitleSection} {
+        padding-bottom: 0;
+        margin-top: 20px;
+      }
+      ${DesTitleItem} {
+        color: rgb(136, 136, 136);
+      }
+    `}
   ${(props) =>
     props.alignCenter &&
     css`
@@ -288,7 +347,7 @@ export const SectionTwoElementsImgWrapper = styled.div`
   justify-content: center;
   align-items: center;
   img {
-    width: 300px;
+    max-width: 300px;
     height: auto;
     object-fit: contain;
   }
