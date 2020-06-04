@@ -23,7 +23,7 @@ const App = () => {
     } else {
       setIsSmallScreen(false);
     }
-  } 
+  };
   return (
     <HashRouter>
       <Suspense fallback={<div />}>
