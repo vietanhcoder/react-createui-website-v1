@@ -73,6 +73,23 @@ export const BannerTextWrapper = styled.div`
   top: 50%;
   transform: translate(0, -50%);
   ${(props) =>
+    props.isSmallScreen &&
+    css`
+      left: 20px;
+      ${BannerTitle} {
+        font-size: 50px;
+        line-height: 45px;
+        margin-bottom: 20px;
+      }
+      ${BannerSubTitle} {
+        margin-bottom: 25px;
+        line-height: 20px;
+        color: #252524;
+        font-size: 2rem;
+      }
+    `}
+
+  ${(props) =>
     props.sectionCTA &&
     css`
       max-width: 800px;

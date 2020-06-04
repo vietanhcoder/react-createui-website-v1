@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faBars } from '@fortawesome/fontawesome-free-solid';
+import { WidthPageContext } from '../../useContext/UseContext';
 import {
   ContainerFluid,
   BannerWrapper,
@@ -40,10 +41,11 @@ export const BannerFruid = ({
   overlay,
   big,
 }) => {
+  const [isSmallScreen, setIsSmallScreen] = useContext(WidthPageContext);
   return (
     <ContainerFluid>
       <BannerWrapper overlay={overlay} big={big} img={url}>
-        <BannerTextWrapper sectionCTA={sectionCTA}>
+        <BannerTextWrapper sectionCTA={sectionCTA} isSmallScreen={isSmallScreen}>
           {headline ? <Headline>{headline}</Headline> : null}
           <BannerTitle sectionCTA={sectionCTA}>{BannerTitleText}</BannerTitle>
           <BannerSubTitle>{BannerSubTitleText}</BannerSubTitle>
@@ -118,24 +120,7 @@ export const ItemContent = ({
 export const NavBarHeader = ({ scrollPos }) => {
   const [isNavVisible, setNavVisibility] = useState(false);
   const [showLv2, setShowLv2] = useState(false);
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 500px)');
-    mediaQuery.addListener(handleMediaQueryChange);
-    handleMediaQueryChange(mediaQuery);
-
-    return () => {
-      mediaQuery.removeListener(handleMediaQueryChange);
-    };
-  }, []);
-
-  const handleMediaQueryChange = (mediaQuery) => {
-    if (mediaQuery.matches) {
-      setIsSmallScreen(true);
-    } else {
-      setIsSmallScreen(false);
-    }
-  };
+  const [isSmallScreen, setIsSmallScreen] = useContext(WidthPageContext);
 
   const toggleNav = () => {
     setNavVisibility(!isNavVisible);

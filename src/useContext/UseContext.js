@@ -1,3 +1,3 @@
 import React, { createContext } from 'react';
 
-export const UseContext = createContext(null);
+export const WidthPageContext = createContext(null);
