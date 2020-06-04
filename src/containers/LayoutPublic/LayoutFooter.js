@@ -63,10 +63,20 @@ const LayoutFooter = () => {
           }
         }
       `}
+
     ${(props) =>
       props.mt_0 &&
       css`
         margin-top: 0px;
+      `}
+    ${(props) =>
+      props.isSmallScreen &&
+      props.mt_0 &&
+      css`
+        margin-top: 20px;
+        p {
+          margin-top: 20px;
+        }
       `}
   `;
 
@@ -132,6 +142,16 @@ const LayoutFooter = () => {
               margin-top: 10px;
             }
           }
+          ${(props) =>
+            props.isSmallScreen &&
+            props.footerSubscribe &&
+            css`
+              width: 100%;
+              margin-top: 20px;
+              p {
+                margin-top: 20px;
+              }
+            `}
         `}
   `;
 
@@ -141,6 +161,15 @@ const LayoutFooter = () => {
       props.isSmallScreen &&
       css`
         flex-direction: column;
+        ${FormContentWrapper} {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+        ${Button} {
+          border-color: rgb(87, 87, 86);
+          color: rgb(87, 87, 86);
+          font-family: 'GreycliffCF-Bold';
+        }
       `}
   `;
   const FormContentWrapper = styled.div`
@@ -193,6 +222,7 @@ const LayoutFooter = () => {
       css`
         flex-direction: column;
         padding-top: 20px;
+        padding-bottom: 10px;
       `}
   `;
 
@@ -262,8 +292,8 @@ const LayoutFooter = () => {
           </FooterItemGrouplv2>
         </FooterItemGrouplv1>
         {/* email subscribe */}
-        <FooterItemGrouplv1 footerSubscribe>
-          <FooterContentItemWrapper mt_0>
+        <FooterItemGrouplv1 footerSubscribe isSmallScreen>
+          <FooterContentItemWrapper isSmallScreen={isSmallScreen} mt_0>
             keep up to date
             {
               <p style={FooterTextItem}>
