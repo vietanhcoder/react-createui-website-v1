@@ -598,11 +598,4 @@ export const FormContentInput = styled.input`
     background: transparent;
     outline: none;
   `;
-export const DesForm = styled.p`
-    display: flex;
-    font-size: 0.8rem;
-    font-style: italic;
-    color: #aaaaaa;
-    margin-bottom: 5px;
-  `
 export const Form = styled.form``

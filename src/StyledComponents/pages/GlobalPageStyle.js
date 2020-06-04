@@ -28,9 +28,9 @@ import {
   ButtonWrapper,
   NavLinkMobileWrapperRelative,
   Overlay,
-  DesForm,
+
   FormInputWrapper, FormContentInput, FormLegend, FormFieldSet, FormSubscription, FormContentWrapper,
-  Form
+
 } from '../molecules/GlobalMoleculeStyle';
 
 // Banner container Fruid
@@ -404,15 +404,26 @@ border-image: initial;
 outline: none;
 background: transparent;
 `
-export const LegendForm = ({ legendnameBtn, legendTitle, textarea, nameComponent, attrName }) => {
+export const LegendForm = ({ legendnameBtn,
+  legendTitle, textarea,
+  nameComponent, attrName,
+  nameInput,
+  typeInput,
+  onChangeInput }) => {
   const [isSmallScreen, setIsSmallScreen] = useContext(WidthPageContext);
   return (
     <FormSubscription attrName={attrName} isSmallScreen={isSmallScreen}>
       <FormContentWrapper nameComponent={nameComponent}>
         <FormFieldSet>
           <FormLegend>{legendTitle}</FormLegend>
-          {textarea ? <TextareaContent /> : (<FormInputWrapper>
-            <FormContentInput />
+          {textarea ? <TextareaContent
+            type={typeInput}
+            name={nameInput} onChange={onChangeInput}
+          /> : (<FormInputWrapper>
+            <FormContentInput
+              type={typeInput}
+              name={nameInput}
+              onChange={onChangeInput} />
           </FormInputWrapper>)}
 
 
@@ -424,15 +435,3 @@ export const LegendForm = ({ legendnameBtn, legendTitle, textarea, nameComponent
 }
 
 
-
-
-export const FormAllContent = ({ desForm, children }) => {
-  return (
-    <>
-      {desForm ? <DesForm>{desForm}</DesForm> : null}
-      <Form>
-        {children}
-      </Form>
-    </>
-  )
-}

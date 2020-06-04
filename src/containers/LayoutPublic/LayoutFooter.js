@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import styled, { css } from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Container, Button } from '../../StyledComponents/molecules/GlobalMoleculeStyle';
+import { Container, Form } from '../../StyledComponents/molecules/GlobalMoleculeStyle';
 import { WidthPageContext } from '../../useContext/UseContext';
-import { LegendForm, FormAllContent } from '../../StyledComponents/pages/GlobalPageStyle'
+import { LegendForm } from '../../StyledComponents/pages/GlobalPageStyle'
 import insta from '../../img/insta.svg';
 import linkedin from '../../img/linkedin.svg';
 import snapchat from '../../img/snapchat.svg';
@@ -170,7 +170,7 @@ const LayoutFooter = () => {
 
   const FooterComponent = () => (
     <Container isSmallScreen={isSmallScreen}>
-      <FormAllContent>
+      <Form>
 
         <FooterContentWrapper isSmallScreen={isSmallScreen} nameComponent="nameComponent">
           {/* footer footerNav */}
@@ -252,7 +252,7 @@ const LayoutFooter = () => {
             </FooterContentItemWrapper>
           </FooterItemGrouplv1>
         </FooterContentWrapper>
-      </FormAllContent>
+      </Form>
     </Container>
   );
 
