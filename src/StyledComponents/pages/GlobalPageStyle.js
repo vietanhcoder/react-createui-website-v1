@@ -117,10 +117,10 @@ export const ItemContent = ({
 // =================================================================
 export const NavBarHeader = ({ scrollPos }) => {
   const [isNavVisible, setNavVisibility] = useState(false);
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
   const [showLv2, setShowLv2] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(max-width: 1200px)');
+    const mediaQuery = window.matchMedia('(max-width: 500px)');
     mediaQuery.addListener(handleMediaQueryChange);
     handleMediaQueryChange(mediaQuery);
 
