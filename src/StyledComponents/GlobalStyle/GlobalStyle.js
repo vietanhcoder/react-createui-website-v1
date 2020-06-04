@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from 'styled-components/macro';
 
 import GreycliffCFBold from '../../fonts/GreycliffCF-Bold.otf';
 import GreycliffCFLight from '../../fonts/GreycliffCF-Light.otf';
@@ -72,7 +72,7 @@ export const GlobalStyle = createGlobalStyle`
     line-height: 1;
     margin: 0;
   }
- 
+
 
   h2 {
     font-size:3.5rem;

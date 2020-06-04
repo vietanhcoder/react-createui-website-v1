@@ -1,7 +1,7 @@
 import React, { lazy, memo, Suspense, useState, useEffect } from 'react';
 import { Route, Switch, HashRouter } from 'react-router-dom';
 import { WidthPageContext } from './useContext/UseContext';
-
+import { Overlay } from './StyledComponents/molecules/GlobalMoleculeStyle';
 const Login = lazy(() => import('./modules/Login/containers/Login'));
 const LayoutPublic = lazy(() => import('./containers/LayoutPublic/LayoutPublic'));
 
@@ -31,6 +31,7 @@ const App = () => {
           <WidthPageContext.Provider value={[isSmallScreen, setIsSmallScreen]}>
             <Route exact path="/" name="Home" component={LayoutPublic} />
             <Route exact path="/login" name="Login" component={Login} />
+            <Overlay />
           </WidthPageContext.Provider>
         </Switch>
       </Suspense>

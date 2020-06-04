@@ -27,6 +27,7 @@ import {
   NavLinkMobileContent,
   ButtonWrapper,
   NavLinkMobileWrapperRelative,
+  Overlay,
 } from '../molecules/GlobalMoleculeStyle';
 
 // Banner container Fruid

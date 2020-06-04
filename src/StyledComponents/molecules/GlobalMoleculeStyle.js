@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css } from 'styled-components/macro';
 import { NavLink, Link } from 'react-router-dom';
 // Container fluid
 
@@ -293,7 +293,7 @@ export const MenuDropdown = styled.div`
       `}
 
 
-    
+
   ${(props) =>
     props.dropDown &&
     css`
@@ -368,7 +368,7 @@ export const NavBarComponent = styled.div`
     /* padding: 10px 0; */
     align-items: center;
     position:fixed;
-    z-index:2;
+    z-index:4;
     width:100%;
     color: white;
     font-family: 'GreycliffCF-Bold';
@@ -450,17 +450,17 @@ export const NavLinkMobileWrapperlv1 = styled.div`
       left: -75%;
     }
   }
-
   display: none;
   position: fixed;
   width: 75%;
   height: 100%;
   background-color: white;
-  z-index: 1;
+  z-index: 3;
   box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
   flex-direction: column;
   justify-content: space-between;
   animation: RightToLeft 2s;
+
   ${(props) =>
     props.isNavVisible &&
     css`
@@ -498,3 +498,22 @@ export const NavLinkMobileContent = styled.div`
 `;
 
 export const NavLinkMobileItem = styled(Link)``;
+
+export const Overlay = styled.div`
+  /* width: 100%;
+  height: 100%; */
+  opacity: 0.5;
+  display: none;
+  &:before {
+    display: block;
+    content: ' ';
+    background: #fafafa;
+    z-index: 1;
+    display: inherit;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
+`;
