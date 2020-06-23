@@ -29,7 +29,7 @@ const App = () => {
       <Suspense fallback={<div />}>
         <Switch>
           <WidthPageContext.Provider value={[isSmallScreen, setIsSmallScreen]}>
-            <Route exact path="/" name="Home" component={LayoutPublic} />
+            <Route path="/" name="Home" component={LayoutPublic} />
             <Route exact path="/login" name="Login" component={Login} />
             <Overlay />
           </WidthPageContext.Provider>
